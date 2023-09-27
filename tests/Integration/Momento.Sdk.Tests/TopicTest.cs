@@ -7,16 +7,19 @@ using System.Threading.Tasks;
 // ReSharper disable once CheckNamespace
 namespace Momento.Sdk.Tests;
 
-public class TopicTest
+public class TopicTest : IClassFixture<CacheClientFixture>
 {
-    public TopicTest()
+    private readonly string cacheName;
+
+    public TopicTest(CacheClientFixture cacheFixture)
     {
+        cacheName = cacheFixture.CacheName;
     }
 
-    [Fact(Timeout = 60000)]
+    [Fact(Timeout = 5000)]
     public async Task PublishAndSubscribe_String_Succeeds()
     {
-        await Task.Run(() => Task.Delay(100000));
+        await Task.Run(() => Task.Delay(10000));
     }
 }
 #endif
