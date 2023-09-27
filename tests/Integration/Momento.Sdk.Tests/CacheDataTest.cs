@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Momento.Sdk.Internal.ExtensionMethods;
 
@@ -334,8 +333,6 @@ public class CacheDataTest : TestBase
         var goodResponse = (CacheGetResponse.Hit)response;
         byte[] setValue = goodResponse.ValueByteArray;
         Assert.Equal(value, setValue);
-        
-        await Task.Run(() => Task.Delay(10000));
 
         // Set with TTL
         key = Utils.NewGuidString();
